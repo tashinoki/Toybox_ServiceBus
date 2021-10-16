@@ -8,7 +8,7 @@ namespace Toy_ServiceBusSession
     public static class Subscriber
     {
         [FunctionName("Subscriber")]
-        public static void Run([ServiceBusTrigger("sample", Connection = "AzureWebJobsStorage")]string myQueueItem, ILogger log)
+        public static void Run([ServiceBusTrigger("sample", Connection = "ServiceBusConnection", IsSessionsEnabled = true)]string myQueueItem, ILogger log)
         {
             log.LogInformation($"C# ServiceBus queue trigger function processed message: {myQueueItem}");
         }
