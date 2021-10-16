@@ -1,0 +1,20 @@
+{
+  "version": "2.0",
+  "extensions": {
+    "serviceBus": {
+      "messageHandlerOptions": {
+        "maxConcurrentCalls": 2
+      },
+      "sessionHandlerOptions": {
+        "maxConcurrentSessions": 1,
+        "maxAutoRenewDuration": "00:10:30",
+        "messageWaitTimeout": "00:00:00.1"
+      }
+    }
+  },
+  "logging": {
+    "logLevel": {
+      "default": "Information"
+    }
+  }
+}
