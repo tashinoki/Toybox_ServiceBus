@@ -3,7 +3,8 @@
   "extensions": {
     "serviceBus": {
       "messageHandlerOptions": {
-        "maxConcurrentCalls": 2
+        "maxConcurrentCalls": 2,
+        "prefetchCount": 10
       },
       "sessionHandlerOptions": {
         "maxConcurrentSessions": 1,
