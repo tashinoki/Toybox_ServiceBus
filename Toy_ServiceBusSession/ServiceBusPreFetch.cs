@@ -1,4 +1,5 @@
 using System;
+using System.Text;
 using Microsoft.Azure.WebJobs;
 using Microsoft.Azure.WebJobs.Host;
 using Microsoft.Extensions.Logging;
@@ -15,8 +16,12 @@ namespace Toy_ServiceBusSession
             MessageReceiver messageReceiver,
             ILogger log)
         {
-            Console.WriteLine(messageReceiver.PrefetchCount);
-            await Task.Delay(5000);
+            var messages = await messageReceiver.ReceiveAsync(100);
+            foreach(var message in messages)
+            {
+                var txt = Encoding.GetEncoding("utf-8").GetString(message.Body);
+                Console.WriteLine(txt);
+            }
             log.LogInformation($"C# ServiceBus queue trigger function processed message: {myQueueItem}");
         }
     }
